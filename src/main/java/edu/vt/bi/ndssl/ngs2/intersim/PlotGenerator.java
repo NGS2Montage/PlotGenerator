@@ -74,8 +74,9 @@ public class PlotGenerator {
             String fileNameWithoutExtension = Files.getNameWithoutExtension(graphFile);
 
             // DEBUG
-            try(BufferedWriter bw = java.nio.file.Files.newBufferedWriter(Paths.get(dir,
-                    fileNameWithoutExtension+"_vectors.txt"))){
+            String s = fileNameWithoutExtension + "_vectors.txt";
+            try(BufferedWriter bw = java.nio.file.Files.newBufferedWriter(dir != null ? Paths.get(dir,
+                    s) : Paths.get(s))){
                 PrintWriter writer = new PrintWriter(bw, true);
                 writer.println("NodeId Age Gender AvgNbrAge");
                 nodeIdToIntersimAgent.entrySet().forEach(nodeIdToV -> {
