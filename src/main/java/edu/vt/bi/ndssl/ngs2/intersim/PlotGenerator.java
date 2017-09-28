@@ -90,7 +90,8 @@ public class PlotGenerator {
             }
 
 
-            Path distanceFile = Paths.get(dir, fileNameWithoutExtension+"_distance.bin");
+            s = fileNameWithoutExtension + "_distance.bin";
+            Path distanceFile = dir != null ? Paths.get(dir, s) : Paths.get(s);
             double normalizationConstant = 1.0*Short.MAX_VALUE/20000;
             try(BufferedOutputStream bos = new BufferedOutputStream(java.nio.file.Files.newOutputStream(distanceFile))){
                 DataOutputStream dos = new DataOutputStream(bos);
