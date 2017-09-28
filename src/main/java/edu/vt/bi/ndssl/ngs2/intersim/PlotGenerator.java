@@ -36,7 +36,9 @@ public class PlotGenerator {
         IntersimData intersimData = outputReader.readOutput(file);
 
         String fileNameWithoutExtension = Files.getNameWithoutExtension(file);
-        Path infectedByAgeGroupFile = Paths.get(dir, fileNameWithoutExtension+"_cumulativeInfectedByAge.txt");
+        String s = fileNameWithoutExtension + "_cumulativeInfectedByAge" +
+                ".txt";
+        Path infectedByAgeGroupFile = dir != null ? Paths.get(dir, s) : Paths.get(s);
 
         findAgeRanges(numBuckets, bucketsStr, intersimData.getNodeIdToIntersimAgent());
 
